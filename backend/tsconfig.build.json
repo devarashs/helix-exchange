@@ -1,14 +1,21 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "module": "NodeNext", // <-- Change this line
-    "moduleResolution": "NodeNext",
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "outDir": "dist",
     "rootDir": "src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@controllers/*": ["src/controllers/*"],
+      "@services/*": ["src/services/*"],
+      "@routes/*": ["src/routes/*"]
+    }
   },
   "exclude": ["node_modules", "dist"]
 }
