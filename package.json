@@ -5,6 +5,9 @@
     "frontend",
     "backend"
   ],
+  "scripts": {
+    "dev": "concurrently \"cd backend && yarn dev\" \"cd frontend && yarn dev\""
+  },
   "devDependencies": {
     "concurrently": "^9.0.1"
   }
