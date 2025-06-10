@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/Providers/theme-provider";
 import { StoreProvider } from "@/components/Providers/StoreProvider";
 import { Toaster } from "@/components/ui/sonner";
+import MainLayoutProvider from "@/components/Providers/MainLayoutProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,7 +39,9 @@ export default function RootLayout({
             disableTransitionOnChange
             storageKey="helix-theme"
           >
-            <main>{children}</main>
+            <main>
+              <MainLayoutProvider>{children}</MainLayoutProvider>
+            </main>
             <Toaster />
           </ThemeProvider>
         </StoreProvider>
