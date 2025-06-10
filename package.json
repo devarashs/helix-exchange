@@ -1,0 +1,11 @@
+{
+  "name": "helix-exchange",
+  "packageManager": "yarn@4.9.1",
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
