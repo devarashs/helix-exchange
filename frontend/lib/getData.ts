@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-export async function getData(query: string) {
+export async function getData(query: string, revalidateTime: number) {
   const api = process.env.NEXT_PUBLIC_API || "http://localhost:5000";
   const cookieStore = await cookies();
   const cookie = cookieStore.get("userInfo");
@@ -9,6 +9,7 @@ export async function getData(query: string) {
     headers: {
       Authorization: `Bearer ${token}`,
     },
+    next: { revalidate: revalidateTime },
   });
 
   if (!res.ok) {

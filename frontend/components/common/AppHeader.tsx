@@ -14,7 +14,7 @@ import NavBar from "./NavBar";
 import { getData } from "@/lib/getData";
 
 export default async function AppHeader() {
-  const Data = await getData("/shop/categories");
+  const Data = await getData("/shop/categories", 60);
   const navLinks = Data?.categories || [];
   return (
     <header className="w-full bg-[#111]">
