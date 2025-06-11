@@ -15,7 +15,7 @@ export default function CollectionCard({
     floorPrice: number;
     volume24h: number;
     owner: {
-      name: string;
+      username: string;
       avatar: string;
     };
   };
@@ -45,7 +45,7 @@ export default function CollectionCard({
           <div className="bg-black rounded-md p-1 shadow-md w-20 h-20 flex items-center justify-center">
             <Image
               src={item.owner.avatar}
-              alt={item.owner.name}
+              alt={item.owner.username}
               width={70}
               height={70}
               className="rounded-lg object-cover w-18 h-18"

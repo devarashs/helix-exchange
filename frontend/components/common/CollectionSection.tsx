@@ -17,7 +17,7 @@ export interface ICollection {
   floorPrice: number;
   volume24h: number;
   owner: {
-    name: string;
+    username: string;
     avatar: string;
   };
   createdAt?: Date;
@@ -26,6 +26,7 @@ export interface ICollection {
 
 export default async function CollectionSection() {
   const Data = await getData("/collection", 0);
+
   const collections: ICollection[] = Data.collections;
   return (
     <section className="px-8 py-2">

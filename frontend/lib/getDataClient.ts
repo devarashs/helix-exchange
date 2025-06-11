@@ -21,7 +21,7 @@ export async function getDataClient<T>(query: string): Promise<T> {
         Authorization: token ? `Bearer ${token}` : "",
       },
     });
-    console.log("Response data:", response);
+
     return response.data;
   } catch (error) {
     console.error(error);
