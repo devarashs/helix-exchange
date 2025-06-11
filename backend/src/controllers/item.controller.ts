@@ -8,8 +8,9 @@ export const getAllItems = async (
   res: Response,
 ): Promise<void> => {
   try {
-    const collectionId = req.query.collectionId as string | undefined;
-    const items = await itemService.getAllItems(collectionId);
+    const collectionSlug = req.query.collectionSlug as string | undefined;
+
+    const items = await itemService.getAllItems(collectionSlug);
     res.json({ items });
   } catch (error) {
     console.error("Error fetching items:", error);

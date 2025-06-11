@@ -4,7 +4,7 @@ import Collection from "@/models/Collection";
 import mongoose from "mongoose";
 
 export class ItemService {
-  async getAllItems(collectionId?: string) {
+  async getAllItems(collectionSlug?: string) {
     try {
       // Ensure User and Collection models are registered
       if (!mongoose.modelNames().includes("User")) {
@@ -12,6 +12,18 @@ export class ItemService {
       }
       if (!mongoose.modelNames().includes("Collection")) {
         mongoose.model("Collection", Collection.schema);
+      }
+      // Find collection by slug if provided
+      let collectionId: string | undefined;
+      if (collectionSlug) {
+        const collection = await Collection.findOne({
+          slug: collectionSlug,
+        }).lean();
+        if (collection) {
+          collectionId = collection._id.toString();
+        } else {
+          throw new Error("Collection not found");
+        }
       }
 
       // Build query filter
