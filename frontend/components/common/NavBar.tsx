@@ -9,7 +9,7 @@ export default function NavBar({ navLinks }: { navLinks: string[] }) {
 
   // Extract the current category from the pathname
   const currentCategory = pathname?.startsWith("/categories/")
-    ? pathname.split("/")[2]?.toUpperCase()
+    ? pathname.split("/")[2]
     : null;
   return (
     <nav className="flex justify-center gap-8 bg-[#181818] border-t border-[#222]">
@@ -23,7 +23,7 @@ export default function NavBar({ navLinks }: { navLinks: string[] }) {
               isActive ? "text-white border-b-2 border-orange-500" : ""
             }`}
           >
-            {link}
+            {link.toUpperCase()}
           </Link>
         );
       })}

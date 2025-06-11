@@ -1,3 +1,5 @@
+import CollectionSearchBar from "@/components/common/CollectionSearchBar";
+import CollectionSection from "@/components/common/CollectionSection";
 import React from "react";
 
 export default async function CategoryItem({
@@ -7,5 +9,11 @@ export default async function CategoryItem({
 }) {
   const { categoryItem } = await params;
   console.log("Category Item Slug:", categoryItem);
-  return <div>{categoryItem}</div>;
+  return (
+    <div>
+      <CollectionSearchBar />
+      <hr className="mb-4 px-2" />
+      <CollectionSection />
+    </div>
+  );
 }
