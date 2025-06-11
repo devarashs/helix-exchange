@@ -8,7 +8,8 @@ export const getAllCollections = async (
   res: Response,
 ): Promise<void> => {
   try {
-    const collections = await collectionService.getAllCollections();
+    const category = req.query.category as string | undefined;
+    const collections = await collectionService.getAllCollections(category);
     res.json({ collections });
   } catch (error) {
     console.error("Error fetching collections:", error);
