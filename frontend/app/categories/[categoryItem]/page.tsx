@@ -1,5 +1,8 @@
 import CollectionSearchBar from "@/components/common/CollectionSearchBar";
-import CollectionSection from "@/components/common/CollectionSection";
+import CollectionSection, {
+  ICollection,
+} from "@/components/common/CollectionSection";
+import { getData } from "@/lib/getData";
 import React from "react";
 
 export default async function CategoryItem({
@@ -8,12 +11,22 @@ export default async function CategoryItem({
   params: Promise<{ categoryItem: string }>;
 }) {
   const { categoryItem } = await params;
-  console.log("Category Item Slug:", categoryItem);
+  console.log("Category Item:", categoryItem);
+  let Data;
+  if (categoryItem === "all") {
+    Data = await getData("/collection", 0);
+  } else {
+    Data = await getData(
+      `/collection?category=${encodeURIComponent(categoryItem)}`,
+      0,
+    );
+  }
+  const collections: ICollection[] = Data.collections;
   return (
     <div>
       <CollectionSearchBar />
       <hr className="mb-4 px-2" />
-      <CollectionSection />
+      <CollectionSection collections={collections} />
     </div>
   );
 }

@@ -6,15 +6,20 @@ import React from "react";
 
 export default function NavBar({ navLinks }: { navLinks: string[] }) {
   const pathname = usePathname();
-
+  const links = [
+    "ALL",
+    ...navLinks.filter((link) => link.toUpperCase() !== "ALL"),
+  ];
   // Extract the current category from the pathname
   const currentCategory = pathname?.startsWith("/categories/")
     ? pathname.split("/")[2]
     : null;
+  console.log("Current Category:", currentCategory);
+
   return (
     <nav className="flex justify-center gap-8 bg-[#181818] border-t border-[#222]">
-      {navLinks?.map((link) => {
-        const isActive = currentCategory === link;
+      {links?.map((link) => {
+        const isActive = currentCategory?.toLowerCase() === link.toLowerCase();
         return (
           <Link
             key={link}

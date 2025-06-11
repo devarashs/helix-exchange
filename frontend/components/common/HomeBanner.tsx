@@ -7,6 +7,7 @@ import Image from "next/image";
 
 // Map categories to image paths
 const categoryImages: Record<string, string> = {
+  all: "/images/weapon-banner.png",
   weapons: "/images/weapon-banner.png",
   footwear: "/images/weapon-banner.png",
   accessories: "/images/weapon-banner.png",

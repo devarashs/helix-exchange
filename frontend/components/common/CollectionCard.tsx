@@ -48,7 +48,7 @@ export default function CollectionCard({
               alt={item.owner.username}
               width={70}
               height={70}
-              className="rounded-lg object-cover w-18 h-18"
+              className="rounded-md object-cover w-18 h-18"
             />
           </div>
         </div>

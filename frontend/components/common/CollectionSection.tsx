@@ -1,6 +1,5 @@
 import React from "react";
 import CollectionCard from "./CollectionCard";
-import { getData } from "@/lib/getData";
 
 export interface ICollection {
   id: string;
@@ -24,10 +23,11 @@ export interface ICollection {
   updatedAt?: Date;
 }
 
-export default async function CollectionSection() {
-  const Data = await getData("/collection", 0);
-
-  const collections: ICollection[] = Data.collections;
+export default async function CollectionSection({
+  collections,
+}: {
+  collections: ICollection[];
+}) {
   return (
     <section className="px-8 py-2">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
