@@ -14,12 +14,9 @@ export interface ICollection {
   coverImage: string;
   floorPrice: number;
   volume24h: number;
-  owner: {
-    name: string;
-    avatar: string;
-  };
-  createdAt?: Date;
-  updatedAt?: Date;
+  owner: Schema.Types.ObjectId;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const CollectionSchema = new Schema<ICollection>(
@@ -58,14 +55,9 @@ const CollectionSchema = new Schema<ICollection>(
       required: true,
     },
     owner: {
-      name: {
-        type: String,
-        required: true,
-      },
-      avatar: {
-        type: String,
-        required: true,
-      },
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
     },
   },
   {

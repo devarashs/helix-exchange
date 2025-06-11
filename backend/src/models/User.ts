@@ -5,13 +5,28 @@ export interface IUser {
   username: string;
   email: string;
   password: string;
+  balance: number;
+  ownedItems?: string[];
+  createdCollections?: string[];
+  avatar: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const UserSchema = new Schema<IUser>(
   {
-    username: { type: String, required: true },
+    username: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    balance: { type: Number, required: true, default: 0 },
+    ownedItems: [{ type: Schema.Types.ObjectId, ref: "Item" }],
+    createdCollections: [{ type: Schema.Types.ObjectId, ref: "Collection" }],
+    avatar: {
+      type: String,
+      required: true,
+      default:
+        "https://i.pinimg.com/236x/11/de/fc/11defc17b380ab9fe1861cd0aa817dc2.jpg",
+    },
   },
   {
     timestamps: true,
