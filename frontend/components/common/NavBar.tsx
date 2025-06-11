@@ -4,15 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-export default function NavBar() {
-  const navLinks = [
-    "CLOTHING",
-    "FOOTWEAR",
-    "ACCESSORIES",
-    "PROPERTIES",
-    "WEAPONS",
-    "VEHICLES",
-  ];
+export default function NavBar({ navLinks }: { navLinks: string[] }) {
   const pathname = usePathname();
 
   // Extract the current category from the pathname
@@ -21,7 +13,7 @@ export default function NavBar() {
     : null;
   return (
     <nav className="flex justify-center gap-8 bg-[#181818] border-t border-[#222]">
-      {navLinks.map((link) => {
+      {navLinks?.map((link) => {
         const isActive = currentCategory === link;
         return (
           <Link

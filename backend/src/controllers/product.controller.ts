@@ -8,11 +8,6 @@ export const getProducts = async (
   res: Response,
 ): Promise<void> => {
   try {
-    if (req.query.categoriesOnly === "true") {
-      const categories = await productService.getCategories();
-      res.json({ categories });
-      return;
-    }
     const products = await productService.getAllProducts();
     res.json({ products });
   } catch (error) {

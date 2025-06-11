@@ -11,8 +11,11 @@ import { Badge } from "@/components/ui/badge";
 import { LogOut, Copy, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import NavBar from "./NavBar";
+import { getData } from "@/lib/getData";
 
-export default function AppHeader() {
+export default async function AppHeader() {
+  const Data = await getData("/shop/categories");
+  const navLinks = Data?.categories || [];
   return (
     <header className="w-full bg-[#111]">
       <div className="flex items-center justify-between px-8 py-4 h-20">
@@ -90,7 +93,8 @@ export default function AppHeader() {
       </div>
 
       {/* Navigation */}
-      <NavBar />
+
+      <NavBar navLinks={navLinks} />
     </header>
   );
 }

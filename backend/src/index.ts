@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import ProductRouter from "./routes/product.routes";
+import ShopRouter from "./routes/shop.routes";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.get("/", (_req, res) => {
 });
 
 app.use("/products", ProductRouter);
+app.use("/shop", ShopRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
