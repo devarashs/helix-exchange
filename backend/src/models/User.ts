@@ -6,8 +6,8 @@ export interface IUser {
   email: string;
   password: string;
   balance: number;
-  ownedItems?: string[];
-  createdCollections?: string[];
+  ownedItems?: Schema.Types.ObjectId[];
+  createdCollections?: Schema.Types.ObjectId[];
   avatar: string;
   createdAt: Date;
   updatedAt: Date;
