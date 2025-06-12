@@ -99,10 +99,10 @@ export default function CollectionBanner({
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <div className="flex items-center">
-                      <span className="font-bold mr-1">
+                      <span className="font-bold mr-2">
                         {data.totalVolume.toLocaleString()}
                       </span>
-                      <SubtractIcon size={20} />
+                      <SubtractIcon size={16} />
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
@@ -118,10 +118,10 @@ export default function CollectionBanner({
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <div className="flex items-center">
-                      <span className="font-bold mr-1">
+                      <span className="font-bold mr-2">
                         {data.floorPrice.toLocaleString()}
                       </span>
-                      <SubtractIcon size={20} />
+                      <SubtractIcon size={16} />
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
