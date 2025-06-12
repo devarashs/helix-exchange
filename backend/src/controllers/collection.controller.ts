@@ -9,7 +9,12 @@ export const getAllCollections = async (
 ): Promise<void> => {
   try {
     const category = req.query.category as string | undefined;
-    const collections = await collectionService.getAllCollections(category);
+    const categorySlug = req.query.categorySlug as string | undefined;
+    const filters = {
+      category,
+      categorySlug,
+    };
+    const collections = await collectionService.getAllCollections(filters);
     res.json({ collections });
   } catch (error) {
     console.error("Error fetching collections:", error);

@@ -3,7 +3,11 @@ import User from "@/models/User";
 import mongoose from "mongoose";
 
 export class CollectionService {
-  async getAllCollections(category?: string) {
+  async getAllCollections(filters: {
+    category?: string;
+    categorySlug?: string;
+  }) {
+    const { category, categorySlug } = filters;
     try {
       // Ensure User model is registered
       if (!mongoose.modelNames().includes("User")) {
@@ -14,6 +18,9 @@ export class CollectionService {
       const filter: Record<string, unknown> = {};
       if (category) {
         filter.category = category;
+      }
+      if (categorySlug) {
+        filter.slug = categorySlug;
       }
 
       // Fetch collections with optional category filter
