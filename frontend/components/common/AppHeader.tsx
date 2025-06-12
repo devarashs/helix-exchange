@@ -68,7 +68,12 @@ export default async function AppHeader() {
           </DropdownMenu>
 
           {/* Balance */}
-          <div className="flex items-center gap-1 bg-[#181818] px-3 py-1 rounded-xs h-12">
+          <div
+            style={{
+              clipPath: "polygon(0% 0%, 100% 0%, 100% 75%, 85% 100%, 0% 100%)",
+            }}
+            className="flex items-center gap-1 bg-[#181818] px-3 py-1 rounded-xs h-12"
+          >
             <span className="text-white font-semibold">2,000,000</span>
             <SubtractIcon size={16} />
           </div>
