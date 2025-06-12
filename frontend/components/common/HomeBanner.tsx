@@ -7,13 +7,18 @@ import Image from "next/image";
 
 // Map categories to image paths
 const categoryImages: Record<string, string> = {
-  all: "/images/weapon-banner.png",
+  all: "https://i.pinimg.com/736x/d2/31/72/d23172f849f5f070d57faf3130ad6fd9.jpg",
   weapons: "/images/weapon-banner.png",
-  footwear: "/images/weapon-banner.png",
-  accessories: "/images/weapon-banner.png",
-  vehicles: "/images/weapon-banner.png",
-  properties: "/images/weapon-banner.png",
-  clothing: "/images/weapon-banner.png",
+  footwear:
+    "https://i.pinimg.com/originals/41/18/ef/4118efe4ef45befc56ff3fab487cb4b6.jpg",
+  accessories:
+    "https://i.pinimg.com/736x/a6/39/fd/a639fd190e86ed40cf3b65949a21e52e.jpg",
+  vehicles:
+    "https://i.pinimg.com/736x/34/af/dd/34afdd640a95bf87cdfda17227da0aea.jpg",
+  properties:
+    "https://i.pinimg.com/736x/0d/60/34/0d6034c46447cec546353713802164e3.jpg",
+  clothing:
+    "https://i.pinimg.com/736x/b4/c6/de/b4c6def460dfe01861ca9d093355657d.jpg",
   // Add more categories as needed
 };
 
