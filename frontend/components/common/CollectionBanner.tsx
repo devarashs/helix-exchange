@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/collapsible";
 import { CustomUserIcon } from "@/icons/CustomUserIcon";
 import { SupplyIcon } from "@/icons/SupplyIcon";
+import CollectionSearchBar from "./CollectionSearchBar";
 
 interface CollectionBannerProps {
   collectionData: ICollection;
@@ -31,6 +32,7 @@ interface CollectionBannerProps {
   totalSupply: number;
   owners: number;
   verified: boolean;
+  itemCount: number;
 }
 
 export default function CollectionBanner({
@@ -39,7 +41,7 @@ export default function CollectionBanner({
   data: CollectionBannerProps;
 }) {
   return (
-    <div className="relative w-full mb-30">
+    <div className="relative w-full mb-5">
       {/* Banner Image */}
       <div className="relative w-full h-[200px] sm:h-[300px] overflow-hidden rounded-md">
         <Image
@@ -89,7 +91,7 @@ export default function CollectionBanner({
 
       {/* Collection Stats */}
       <div className="mt-10">
-        <Card className="absolute right-6 bottom-0 p-4 rounded-lg border shadow-lg bg-background">
+        <Card className="absolute right-0 bottom-30 p-4 rounded-lg border shadow-lg bg-background">
           <div className="grid grid-cols-1 gap-y-3">
             <div className="flex justify-between items-center">
               <span className="text-sm text-muted-foreground">
@@ -203,6 +205,17 @@ export default function CollectionBanner({
             </CollapsibleContent>
           </Collapsible>
         </div>
+      </div>
+      <div className="mt-20">
+        <hr className="my-5" />
+        <CollectionSearchBar
+          data={{
+            resultCount: data.itemCount,
+            customButtonEnabled: true,
+            customButtonText: "ACTIVITY",
+          }}
+        />
+        <hr />
       </div>
     </div>
   );

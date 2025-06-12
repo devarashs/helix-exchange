@@ -23,7 +23,11 @@ export default async function CategoryItem({
   const collections: ICollection[] = Data.collections;
   return (
     <div>
-      <CollectionSearchBar />
+      <CollectionSearchBar
+        data={{
+          resultCount: collections.length,
+        }}
+      />
       <hr className="mb-4" />
       <CollectionSection collections={collections} />
     </div>

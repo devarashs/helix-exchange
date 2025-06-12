@@ -9,16 +9,28 @@ import {
   Grid2X2,
   Rows,
   SlidersHorizontal,
+  ChartNoAxesCombined,
 } from "lucide-react";
 
-export default function CollectionSearchBar() {
+export default function CollectionSearchBar({
+  data,
+}: {
+  data: {
+    resultCount: number;
+    customButtonEnabled?: boolean;
+    customButtonText?: string;
+  };
+}) {
   return (
-    <div className="flex items-center justify-between w-full pb-6 rounded-lg gap-4">
+    <div className="flex items-center justify-between w-full pb-6 gap-4">
       {/* Left: Filters */}
       <div className="flex items-center gap-2">
         <Button
+          style={{
+            clipPath: "polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%)",
+          }}
           variant="ghost"
-          className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white bg-[#232326] hover:bg-[#232326]/80 rounded-md"
+          className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white bg-[#232326] hover:bg-[#232326]/80 rounded-xs"
         >
           <SlidersHorizontal className="w-5 h-5" />
           <span className="uppercase tracking-wide">Filters</span>
@@ -34,14 +46,14 @@ export default function CollectionSearchBar() {
           LIVE
         </span>
         <span className="ml-2 text-xs text-white/70 font-medium">
-          5 Results
+          {data.resultCount} Results
         </span>
       </div>
 
       {/* Center: Search */}
       <div className="flex-1 flex justify-center">
         <Input
-          className="w-full max-w-md bg-[#232326] border-none text-white placeholder:text-white/40 rounded-md px-4 py-2 focus:ring-2 focus:ring-[#232326] focus:outline-none"
+          className="w-full max-w-md bg-[#232326] border-none text-white placeholder:text-white/40 rounded-xs px-4 py-2 focus:ring-2 focus:ring-[#232326] focus:outline-none"
           placeholder="Search Collections"
         />
       </div>
@@ -63,12 +75,27 @@ export default function CollectionSearchBar() {
           <Rows className="w-5 h-5" />
         </Button>
         <Button
+          style={{
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 60%, 90% 100%, 0% 100%)",
+          }}
           variant="ghost"
-          className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white bg-[#232326] hover:bg-[#232326]/80 rounded-md"
+          className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white bg-[#232326] hover:bg-[#232326]/80 rounded-xs"
         >
           MOST RECENT
           <Filter className="w-4 h-4 ml-1" />
         </Button>
+        {data.customButtonEnabled && (
+          <Button
+            style={{
+              clipPath: "polygon(0% 0%, 100% 0%, 100% 70%, 90% 100%, 0% 100%)",
+            }}
+            variant="ghost"
+            className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white bg-[#232326] hover:bg-[#232326]/80 rounded-xs"
+          >
+            {data.customButtonText || "Custom Action"}
+            <ChartNoAxesCombined className="w-4 h-4 ml-1" />
+          </Button>
+        )}
       </div>
     </div>
   );

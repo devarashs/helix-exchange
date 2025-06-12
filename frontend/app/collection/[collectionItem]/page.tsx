@@ -23,6 +23,7 @@ export default async function page({
   const collection: ICollection = CollectionData.collections[0];
   const totalSupply = items.reduce((acc, item) => acc + (item.supply || 0), 0);
   const randomNumber = Math.floor(Math.random() * 1000) + 1;
+
   return (
     <div>
       <CollectionBanner
@@ -35,9 +36,10 @@ export default async function page({
           totalSupply: totalSupply,
           owners: randomNumber,
           verified: true,
+          itemCount: items.length,
         }}
       />
-      <ItemSection items={items} />
+      <ItemSection items={items} collection={collection} />
     </div>
   );
 }
