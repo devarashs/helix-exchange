@@ -28,8 +28,8 @@ export interface IItem {
 
 export default async function ItemSection({ items }: { items: IItem[] }) {
   return (
-    <section className="px-8 py-2">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
+    <section className="py-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2">
         {items.map((col) => (
           <ItemCard key={col._id} item={col} />
         ))}
