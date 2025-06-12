@@ -35,11 +35,11 @@ export default async function AppHeader() {
         </div>
 
         {/* User Section */}
-        <div className="flex items-center gap-1 h-full">
+        <div className="flex items-center gap-0.5 h-full">
           {/* Avatar Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="flex items-center gap-2 bg-[#181818] px-3 py-1 rounded-md h-12">
+              <button className="flex items-center gap-2 bg-[#181818] px-3 py-1 rounded-xs h-12">
                 <Avatar className="h-8 w-8">
                   <AvatarImage src="/avatar.jpg" alt="User" />
                   <AvatarFallback>U</AvatarFallback>
@@ -68,7 +68,7 @@ export default async function AppHeader() {
           </DropdownMenu>
 
           {/* Balance */}
-          <div className="flex items-center gap-1 bg-[#181818] px-3 py-1 rounded-md h-12">
+          <div className="flex items-center gap-1 bg-[#181818] px-3 py-1 rounded-xs h-12">
             <span className="text-white font-semibold">2,000,000</span>
             <SubtractIcon size={16} />
           </div>

@@ -11,7 +11,7 @@ export default function AppNavigator() {
     .replace(/^\/|\/$/g, "")
     .split("/")
     .filter(Boolean)
-    .map((seg) => seg.toUpperCase());
+    .map((seg) => seg.toUpperCase().replace(/-/g, " "));
 
   return (
     <nav className="flex items-center gap-2 px-8 py-3">
