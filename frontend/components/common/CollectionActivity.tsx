@@ -58,7 +58,7 @@ export default function CollectionActivity({
         </div>
         <Button
           style={{
-            clipPath: "polygon(0% 0%, 100% 0%, 100% 60%, 90% 100%, 0% 100%)",
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 70%, 90% 100%, 0% 100%)",
           }}
           variant="ghost"
           className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-white bg-[#232326] hover:bg-[#232326]/80 rounded-xs"
