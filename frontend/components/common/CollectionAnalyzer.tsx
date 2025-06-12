@@ -13,12 +13,17 @@ export default function CollectionAnalyzer({
 }) {
   return (
     <div className="flex flex-col gap-5">
-      <CollectionActivity
-        data={{
-          collectionImage: data.collection.coverImage,
-        }}
-      />
-      <CollectionChart />
+      <div className="border-l rounded-l p-4">
+        <CollectionActivity
+          data={{
+            collectionImage: data.collection.coverImage,
+          }}
+        />
+      </div>
+      <hr />
+      <div className="border-l rounded-l p-4">
+        <CollectionChart />
+      </div>
     </div>
   );
 }
