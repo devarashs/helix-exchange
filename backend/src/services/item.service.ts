@@ -4,7 +4,11 @@ import Collection from "@/models/Collection";
 import mongoose from "mongoose";
 
 export class ItemService {
-  async getAllItems(collectionSlug?: string) {
+  async getAllItems({
+    filters,
+  }: {
+    filters: { collectionSlug?: string; itemId?: string; itemName?: string };
+  }) {
     try {
       // Ensure User and Collection models are registered
       if (!mongoose.modelNames().includes("User")) {
@@ -15,9 +19,10 @@ export class ItemService {
       }
       // Find collection by slug if provided
       let collectionId: string | undefined;
-      if (collectionSlug) {
+
+      if (filters.collectionSlug) {
         const collection = await Collection.findOne({
-          slug: collectionSlug,
+          slug: filters.collectionSlug,
         }).lean();
         if (collection) {
           collectionId = collection._id.toString();
@@ -30,6 +35,12 @@ export class ItemService {
       const filter: Record<string, unknown> = {};
       if (collectionId) {
         filter.collectionId = collectionId;
+      }
+      if (filters.itemId) {
+        filter._id = filters.itemId;
+      }
+      if (filters.itemName) {
+        filter.name = { $regex: new RegExp(filters.itemName, "i") }; // Case-insensitive search
       }
 
       // Fetch items from DB

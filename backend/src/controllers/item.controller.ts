@@ -9,8 +9,17 @@ export const getAllItems = async (
 ): Promise<void> => {
   try {
     const collectionSlug = req.query.collectionSlug as string | undefined;
+    const itemId = req.query.itemId as string | undefined;
+    const itemSlug = req.query.itemSlug as string | undefined;
+    const refineSlug = itemSlug ? itemSlug.replace(/-/g, " ") : undefined;
 
-    const items = await itemService.getAllItems(collectionSlug);
+    const filters = {
+      collectionSlug: collectionSlug || undefined,
+      itemId: itemId || undefined,
+      itemName: refineSlug,
+    };
+
+    const items = await itemService.getAllItems({ filters });
     res.json({ items });
   } catch (error) {
     console.error("Error fetching items:", error);
