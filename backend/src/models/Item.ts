@@ -1,9 +1,11 @@
 import { Schema, model } from "mongoose";
 
 export interface IItem {
-  id: string;
+  _id: string;
   collectionId: Schema.Types.ObjectId;
   name: string;
+  price: number;
+  supply: number;
   image: string;
   description: string;
   attributes: {
@@ -31,6 +33,16 @@ const ItemSchema = new Schema<IItem>(
     image: {
       type: String,
       required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    supply: {
+      type: Number,
+      required: true,
+      default: 0,
     },
     description: {
       type: String,
@@ -62,14 +74,6 @@ const ItemSchema = new Schema<IItem>(
   },
   {
     timestamps: true,
-    toJSON: {
-      virtuals: true,
-      versionKey: false,
-      transform: (_doc, ret) => {
-        ret.id = ret._id;
-        delete ret._id;
-      },
-    },
   },
 );
 

@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 export interface IUser {
-  id: string;
+  _id: string;
   username: string;
   email: string;
   password: string;
@@ -30,14 +30,6 @@ const UserSchema = new Schema<IUser>(
   },
   {
     timestamps: true,
-    toJSON: {
-      virtuals: true,
-      versionKey: false,
-      transform: (_doc, ret) => {
-        ret.id = ret._id;
-        delete ret._id;
-      },
-    },
   },
 );
 

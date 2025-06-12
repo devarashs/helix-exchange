@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
 export interface ICollection {
-  id: string;
+  _id: string;
   slug: string;
   name: string;
   category:
@@ -62,14 +62,6 @@ const CollectionSchema = new Schema<ICollection>(
   },
   {
     timestamps: true,
-    toJSON: {
-      virtuals: true,
-      versionKey: false,
-      transform: (_doc, ret) => {
-        ret.id = ret._id;
-        delete ret._id;
-      },
-    },
   },
 );
 

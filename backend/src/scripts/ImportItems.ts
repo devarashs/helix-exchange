@@ -1,5 +1,13 @@
 import mongoose, { Types } from "mongoose";
 
+// Helper functions to generate random price and supply
+function getRandomPrice() {
+  return Math.floor(Math.random() * (10000 - 2000 + 1)) + 2000;
+}
+function getRandomSupply() {
+  return Math.floor(Math.random() * (100 - 20 + 1)) + 20;
+}
+
 const items = [
   // Panda Weapon Pack Items
   {
@@ -16,6 +24,8 @@ const items = [
       mobility: 85,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b2"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994080"),
@@ -31,6 +41,8 @@ const items = [
       mobility: 95,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b2"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994080"),
@@ -46,6 +58,8 @@ const items = [
       mobility: 65,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b2"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994080"),
@@ -60,6 +74,8 @@ const items = [
       mobility: 45,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b2"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994080"),
@@ -75,6 +91,8 @@ const items = [
       mobility: 90,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b2"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994080"),
@@ -89,6 +107,8 @@ const items = [
       mobility: 95,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b2"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
 
   // Cat Weapon Pack Items
@@ -106,6 +126,8 @@ const items = [
       mobility: 75,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b8"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994081"),
@@ -121,6 +143,8 @@ const items = [
       mobility: 40,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b8"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994081"),
@@ -136,6 +160,8 @@ const items = [
       mobility: 100,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b8"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994081"),
@@ -151,6 +177,8 @@ const items = [
       mobility: 85,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b8"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994081"),
@@ -166,6 +194,8 @@ const items = [
       mobility: 70,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b8"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
 
   // Dog Weapon Pack Items
@@ -183,6 +213,8 @@ const items = [
       mobility: 60,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b8"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994082"),
@@ -198,6 +230,8 @@ const items = [
       mobility: 90,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b8"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994082"),
@@ -213,6 +247,8 @@ const items = [
       mobility: 45,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b8"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994082"),
@@ -228,6 +264,8 @@ const items = [
       mobility: 100,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b8"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994082"),
@@ -243,6 +281,8 @@ const items = [
       mobility: 95,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b8"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994082"),
@@ -258,6 +298,8 @@ const items = [
       mobility: 90,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b8"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
 
   // Turtle Weapon Pack Items
@@ -275,6 +317,8 @@ const items = [
       mobility: 40,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67ba"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994083"),
@@ -290,6 +334,8 @@ const items = [
       mobility: 55,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67ba"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994083"),
@@ -305,6 +351,8 @@ const items = [
       mobility: 75,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67ba"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994083"),
@@ -320,6 +368,8 @@ const items = [
       mobility: 80,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67ba"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994083"),
@@ -335,6 +385,8 @@ const items = [
       mobility: 85,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67ba"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994083"),
@@ -350,6 +402,8 @@ const items = [
       mobility: 35,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67ba"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
 
   // Axolotl Weapon Pack Items
@@ -367,6 +421,8 @@ const items = [
       mobility: 90,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b6"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994084"),
@@ -382,6 +438,8 @@ const items = [
       mobility: 95,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b6"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994084"),
@@ -397,6 +455,8 @@ const items = [
       mobility: 75,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b6"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994084"),
@@ -412,6 +472,8 @@ const items = [
       mobility: 85,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b6"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
   {
     collectionId: new Types.ObjectId("6849d3fb2bbba9d05c994084"),
@@ -427,6 +489,8 @@ const items = [
       mobility: 65,
     },
     ownerId: new Types.ObjectId("6849d2277e4ef5baf93e67b6"),
+    price: getRandomPrice(),
+    supply: getRandomSupply(),
   },
 ];
 
@@ -443,6 +507,8 @@ async function importData() {
         description: String,
         attributes: Object,
         ownerId: Types.ObjectId,
+        price: Number,
+        supply: Number,
       }),
     );
 
