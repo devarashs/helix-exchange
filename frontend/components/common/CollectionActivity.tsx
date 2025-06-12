@@ -71,7 +71,7 @@ export default function CollectionActivity({
       {/* Table with fixed height and scroll */}
       <div className="overflow-auto" style={{ maxHeight }}>
         <Table className="w-full">
-          <TableHeader className="sticky top-0 bg-black z-10">
+          <TableHeader className="sticky top-0 z-10">
             <TableRow className="border-b border-gray-800 hover:bg-transparent">
               <TableHead className="w-[80px] text-gray-400 font-normal">
                 <Clock size={16} className="text-gray-400" />
