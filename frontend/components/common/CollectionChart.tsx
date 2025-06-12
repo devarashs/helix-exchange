@@ -8,6 +8,7 @@ import {
   XAxis,
   YAxis,
   Scatter,
+  ComposedChart,
 } from "recharts";
 
 import {
@@ -41,19 +42,12 @@ const generateSalesData = () => {
     value += Math.random() * 20 * (i + 1);
     const salesValue = Math.round(value);
 
-    // Create scatter points that are guaranteed to be different
-    // Only show scatter points for some data points
+    // Create scatter points that blend with the area
     let scatterValue = null;
-    if (Math.random() > 0.4) {
-      // Increased probability to show more scatter points
-      // Ensure minimum offset of 5 units (either up or down)
-      const minOffset = 5;
-      const direction = Math.random() > 0.5 ? 1 : -1;
-      const offset = minOffset + Math.random() * 10; // Between 5-15 units offset
-
-      scatterValue = Math.round(salesValue + direction * offset);
-
-      // Ensure scatter value is positive
+    if (Math.random() > 0.3) {
+      // Make scatter points closer to the area line for better blending
+      const offset = (Math.random() - 0.5) * 15; // Random offset between -7.5 and 7.5
+      scatterValue = Math.round(salesValue + offset);
       scatterValue = Math.max(scatterValue, 5);
     }
 
@@ -75,7 +69,7 @@ const chartConfig = {
   },
   scatter: {
     label: "Points",
-    color: "#000000",
+    color: "#ff6b4a",
   },
 } satisfies ChartConfig;
 
@@ -110,7 +104,7 @@ export default function CollectionChart() {
       </CardHeader>
       <CardContent className="p-0">
         <ChartContainer config={chartConfig} className="h-80">
-          <AreaChart
+          <ComposedChart
             data={chartData}
             margin={{
               top: 5,
@@ -160,83 +154,44 @@ export default function CollectionChart() {
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
 
             <defs>
-              {/* Create multiple gradient bands to achieve the layered effect */}
+              {/* Create gradient for area chart */}
               <linearGradient id="salesGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="0%"
-                  stopColor="var(--color-desktop)"
-                  stopOpacity={1.0}
-                />
-                <stop
-                  offset="25%"
-                  stopColor="var(--color-desktop)"
-                  stopOpacity={0.3}
-                />
-                <stop
-                  offset="50%"
-                  stopColor="var(--color-desktop)"
-                  stopOpacity={0.2}
-                />
-                <stop
-                  offset="75%"
-                  stopColor="var(--color-desktop)"
-                  stopOpacity={0.1}
-                />
-                <stop
-                  offset="100%"
-                  stopColor="var(--color-desktop)"
-                  stopOpacity={0.05}
-                />
+                <stop offset="0%" stopColor="#ff6b4a" stopOpacity={0.8} />
+                <stop offset="25%" stopColor="#ff6b4a" stopOpacity={0.4} />
+                <stop offset="50%" stopColor="#ff6b4a" stopOpacity={0.2} />
+                <stop offset="75%" stopColor="#ff6b4a" stopOpacity={0.1} />
+                <stop offset="100%" stopColor="#ff6b4a" stopOpacity={0.05} />
               </linearGradient>
 
-              {/* Add additional pattern with stripes for texture */}
-              <pattern
-                id="stripePattern"
-                patternUnits="userSpaceOnUse"
-                width="10"
-                height="10"
-                patternTransform="rotate(45)"
-              >
-                <rect width="10" height="10" fill="url(#salesGradient)" />
-                <line
-                  x1="0"
-                  y1="0"
-                  x2="0"
-                  y2="10"
-                  stroke="#ff3000"
-                  strokeWidth="5"
-                  strokeOpacity="0.2"
-                />
-              </pattern>
+              {/* Gradient for scatter points to blend with area */}
+              <radialGradient id="scatterGradient" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#ff6b4a" stopOpacity={1} />
+                <stop offset="70%" stopColor="#ff6b4a" stopOpacity={0.8} />
+                <stop offset="100%" stopColor="#ff6b4a" stopOpacity={0.3} />
+              </radialGradient>
             </defs>
 
-            {/* Main area with primary gradient */}
+            {/* Main area chart */}
             <Area
               dataKey="sales"
               type="monotone"
               fill="url(#salesGradient)"
               fillOpacity={1}
               stroke="#ff6b4a"
-              strokeWidth={1}
+              strokeWidth={2}
             />
 
-            {/* Additional transparent areas for layered effect */}
-            <Area
-              dataKey="sales"
-              type="monotone"
-              fill="#ff2000"
-              fillOpacity={0.2}
-              stroke="none"
-            />
-
+            {/* Blended scatter points */}
             <Scatter
               dataKey="scatter"
-              fill="black"
-              stroke="white"
+              fill="url(#scatterGradient)"
+              stroke="#ff6b4a"
               strokeWidth={1}
-              r={3}
+              strokeOpacity={0.8}
+              r={4}
+              fillOpacity={0.9}
             />
-          </AreaChart>
+          </ComposedChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className="pt-0">
