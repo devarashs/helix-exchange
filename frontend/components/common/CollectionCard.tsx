@@ -33,22 +33,22 @@ export default function CollectionCard({
     <Card
       key={item.slug}
       className={clsx(
-        "relative bg-[#141415] rounded-md overflow-hidden border border-[#27272a] shadow-none transition-shadow",
+        "relative bg-[#141415] rounded-md overflow-hidden border border-[#27272a] shadow-none transition-shadow p-0",
         "hover:shadow-lg hover:scale-101 transition-all duration-500",
         "hover:border-white",
         "group",
       )}
     >
-      {/* Cover Image */}
-      <div className="relative">
+      {/* Cover Image - Modified to fill the entire top with no gaps */}
+      <div className="relative h-48 w-full">
         <Image
-          width={400}
-          height={200}
           src={item.coverImage}
           alt={item.name}
-          className="w-full h-48 object-cover"
+          fill
+          className="object-cover"
           priority
         />
+
         {/* Owner Avatar */}
         <div className="absolute left-4 -bottom-10 z-10">
           <div className="bg-black rounded-md p-1 shadow-md w-20 h-20 flex items-center justify-center">
@@ -79,8 +79,9 @@ export default function CollectionCard({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+
       {/* Card Content */}
-      <CardContent className="pt-8 px-2">
+      <CardContent className="pt-8 pb-2 px-2">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-lg font-semibold text-white">{item.name}</span>
           <VectorIcon size={16} />
