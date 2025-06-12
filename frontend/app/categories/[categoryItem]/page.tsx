@@ -11,7 +11,6 @@ export default async function CategoryItem({
   params: Promise<{ categoryItem: string }>;
 }) {
   const { categoryItem } = await params;
-  console.log("Category Item:", categoryItem);
   let Data;
   if (categoryItem === "all") {
     Data = await getData("/collection", 0);
@@ -25,7 +24,7 @@ export default async function CategoryItem({
   return (
     <div>
       <CollectionSearchBar />
-      <hr className="mb-4 px-2" />
+      <hr className="mb-4" />
       <CollectionSection collections={collections} />
     </div>
   );

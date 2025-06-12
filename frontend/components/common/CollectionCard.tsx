@@ -1,8 +1,17 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
-import { BadgeCheck, MoreHorizontal, XCircle } from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
 import clsx from "clsx";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import Link from "next/link";
+import { SubtractIcon } from "@/icons/SubtractIcon";
+import { VectorIcon } from "@/icons/VectorIcon";
 
 export default function CollectionCard({
   item,
@@ -24,7 +33,7 @@ export default function CollectionCard({
     <Card
       key={item.slug}
       className={clsx(
-        "relative bg-[#18181b] rounded-md overflow-hidden border border-[#27272a] shadow-none transition-shadow",
+        "relative bg-[#141415] rounded-md overflow-hidden border border-[#27272a] shadow-none transition-shadow",
         "hover:shadow-lg hover:scale-101 transition-all duration-500",
         "hover:border-white",
         "group",
@@ -41,7 +50,7 @@ export default function CollectionCard({
           priority
         />
         {/* Owner Avatar */}
-        <div className="absolute left-4 -bottom-12 z-10">
+        <div className="absolute left-4 -bottom-10 z-10">
           <div className="bg-black rounded-md p-1 shadow-md w-20 h-20 flex items-center justify-center">
             <Image
               src={item.owner.avatar}
@@ -53,44 +62,51 @@ export default function CollectionCard({
           </div>
         </div>
 
-        <button
-          className={clsx(
-            "absolute -bottom-14 right-3 rounded-full p-2 hover:bg-[#2a2a2e] transition-colors",
-            "opacity-0 group-hover:opacity-100 transition-opacity duration-300",
-            "pointer-events-none group-hover:pointer-events-auto hover:cursor-pointer",
-          )}
-        >
-          <MoreHorizontal size={20} className="text-white" />
-        </button>
+        <DropdownMenu>
+          <DropdownMenuTrigger
+            className={clsx(
+              "absolute -bottom-14 right-3 rounded-full p-2 hover:bg-[#2a2a2e] transition-colors",
+              "opacity-0 group-hover:opacity-100 transition-opacity duration-300",
+              "pointer-events-none group-hover:pointer-events-auto hover:cursor-pointer",
+            )}
+          >
+            <MoreHorizontal size={20} className="text-white" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <Link href={`/collection/${item.slug}`}>
+              <DropdownMenuLabel>View</DropdownMenuLabel>
+            </Link>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
       {/* Card Content */}
-      <CardContent className="pt-12 px-2">
+      <CardContent className="pt-8 px-2">
         <div className="flex items-center gap-2 mb-1">
           <span className="text-lg font-semibold text-white">{item.name}</span>
-          <BadgeCheck className="text-yellow-400" size={20} />
+          <VectorIcon size={16} />
         </div>
 
-        <div className="bg-[#232326] rounded-md mt-4 flex justify-between px-3 py-3">
+        <div className="bg-white/[0.06] rounded-md mt-4 flex justify-between px-3 py-3">
           <div className="flex flex-col items-start">
-            <span className="text-sm text-[#a1a1aa] font-semibold mb-1">
+            <span className="text-lg text-white/[0.56] font-semibold mb-1">
               Floor Price
             </span>
-            <div className="flex items-center gap-1">
-              <span className="text-lg font-bold text-white">
+            <div className="flex items-center gap-3">
+              <span className="text-lg font-semibold text-[#FFFFFF]">
                 {item.floorPrice.toLocaleString()}
               </span>
-              <XCircle className="text-pink-400" size={20} />
+              <SubtractIcon size={16} />
             </div>
           </div>
           <div className="flex flex-col items-start">
-            <span className="text-sm text-[#a1a1aa] font-semibold mb-1">
+            <span className="text-lg text-white/[0.56] font-semibold mb-1">
               Total Volume
             </span>
-            <div className="flex items-center gap-1">
-              <span className="text-lg font-bold text-white">
+            <div className="flex items-center gap-3">
+              <span className="text-lg font-semibold text-[#FFFFFF]">
                 {item.volume24h.toLocaleString()}
               </span>
-              <XCircle className="text-pink-400" size={20} />
+              <SubtractIcon size={16} />
             </div>
           </div>
         </div>

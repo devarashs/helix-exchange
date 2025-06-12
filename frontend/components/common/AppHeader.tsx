@@ -8,10 +8,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
-import { LogOut, Copy, ShoppingBag } from "lucide-react";
+import { LogOut, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import NavBar from "./NavBar";
 import { getData } from "@/lib/getData";
+import { SubtractIcon } from "@/icons/SubtractIcon";
+import { HelixLogoIcon } from "@/icons/HelixLogoIcon";
 
 export default async function AppHeader() {
   const Data = await getData("/shop/categories", 60);
@@ -20,16 +22,8 @@ export default async function AppHeader() {
     <header className="w-full bg-[#111]">
       <div className="flex items-center justify-between px-8 py-4 h-20">
         {/* Logo */}
-        <Link
-          href={"/"}
-          className="flex flex-col items-center gap-2 h-full justify-center"
-        >
-          <span className="text-2xl font-bold tracking-widest text-white">
-            HELIX
-          </span>
-          <span className="text-xs font-semibold tracking-widest text-orange-500 ml-1">
-            EXCHANGE
-          </span>
+        <Link href={"/"}>
+          <HelixLogoIcon />
         </Link>
 
         {/* Search */}
@@ -76,14 +70,11 @@ export default async function AppHeader() {
           {/* Balance */}
           <div className="flex items-center gap-1 bg-[#181818] px-3 py-1 rounded-md h-12">
             <span className="text-white font-semibold">2,000,000</span>
-            <span className="text-pink-400 text-lg">✘</span>
-            <button className="ml-1">
-              <Copy className="h-4 w-4 text-gray-400" />
-            </button>
+            <SubtractIcon size={16} />
           </div>
 
           {/* Shopping Cart */}
-          <button className="relative bg-[#181818] p-2 rounded-md h-12 flex items-center">
+          <button className="relative p-2 rounded-md h-12 flex items-center">
             <ShoppingBag className="h-5 w-5 text-gray-300" />
             <Badge className="absolute -top-1 -right-1 bg-orange-500 text-xs px-1.5 py-0.5 rounded-full">
               12

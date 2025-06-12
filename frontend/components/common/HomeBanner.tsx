@@ -25,7 +25,7 @@ export default function HomeBanner() {
   const imageSrc = category && categoryImages[category];
 
   return (
-    <div className="px-8 w-full py-4">
+    <div className="w-full py-4">
       <div
         className={cn(
           "relative w-full h-64 flex items-center justify-center border rounded-sm overflow-hidden",

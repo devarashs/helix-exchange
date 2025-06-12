@@ -24,7 +24,7 @@ export default function NavBar({ navLinks }: { navLinks: string[] }) {
           <Link
             key={link}
             href={`/categories/${link.toLowerCase()}`}
-            className={`py-3 text-sm font-medium tracking-wide text-gray-400 hover:text-white transition ${
+            className={`py-3 text-sm font-bold tracking-wide text-gray-400 hover:text-white transition ${
               isActive ? "text-white border-b-2 border-orange-500" : ""
             }`}
           >

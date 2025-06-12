@@ -2,7 +2,7 @@ import React from "react";
 import CollectionCard from "./CollectionCard";
 
 export interface ICollection {
-  id: string;
+  _id: string;
   slug: string;
   name: string;
   category:
@@ -29,7 +29,7 @@ export default async function CollectionSection({
   collections: ICollection[];
 }) {
   return (
-    <section className="px-8 py-2">
+    <section className="py-2">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
         {collections.map((col) => (
           <CollectionCard key={col.slug} item={col} />
