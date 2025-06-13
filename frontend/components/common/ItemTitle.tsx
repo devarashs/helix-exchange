@@ -59,8 +59,8 @@ export default function ItemTitle({ itemData }: { itemData: IItem }) {
           </Avatar>
           <hr />
           <div className="flex flex-col">
-            <span className="text-xs text-gray-400">Owner</span>
-            <span className="text-sm font-medium text-[#FF6B5A]">
+            <span className="text-lg font-bold text-gray-400">Owner</span>
+            <span className="text-lg font-bold text-[#F8684F]">
               {itemData.ownerId.username || "CallumGamer"}
             </span>
           </div>

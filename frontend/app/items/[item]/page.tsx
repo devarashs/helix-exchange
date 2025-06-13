@@ -64,14 +64,14 @@ export default async function page({
   const ItemData = await getData(`/item?itemSlug=${item}`, 0);
   const Data: IItem = ItemData.items[0];
   return (
-    <div className="flex justify-between gap-8">
+    <div className="flex justify-between gap-8 mb-4">
       <div className="w-[50%]">
         <ItemVisualizer itemData={Data} />
       </div>
       <div className="w-[50%] flex flex-col gap-4">
         <ItemTitle itemData={Data} />
         <ItemBuySection itemData={Data} />
-        <ItemAnalyzer />
+        <ItemAnalyzer itemData={Data} />
         <ItemOffers />
         <ItemListing />
       </div>

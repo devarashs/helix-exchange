@@ -44,11 +44,11 @@ export default function ItemCard({ item }: { item: IItem }) {
                   clipPath:
                     "polygon(0% 0%, 100% 0%, 100% 70%, 80% 100%, 0% 100%)",
                 }}
-                className="bg-[#FF6B5A] hover:bg-[#FF8B7A] text-black font-medium rounded-md flex items-center gap-2 py-2 px-4 hover:cursor-pointer"
+                className="bg-[#F8684F] hover:bg-[#FF8B7A] text-black font-medium rounded-md flex items-center gap-2 py-2 px-4 hover:cursor-pointer"
               >
                 <TagIcon
                   size={20}
-                  className="font-bold text-[#FF6B5A]"
+                  className="font-bold text-[#F8684F]"
                   fill="black"
                 />
                 <span className="text-lg font-semibold">BUY</span>
