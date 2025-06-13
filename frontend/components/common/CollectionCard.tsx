@@ -82,7 +82,7 @@ export default function CollectionCard({
 
       {/* Card Content */}
       <CardContent className="pt-8 pb-2 px-2">
-        <div className="flex items-center gap-2 mb-1">
+        <div className="flex items-center gap-2 mb-1 px-1">
           <span className="text-lg font-semibold text-white">{item.name}</span>
           <VectorIcon size={16} />
         </div>
