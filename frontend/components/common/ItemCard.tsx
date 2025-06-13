@@ -38,25 +38,21 @@ export default function ItemCard({ item }: { item: IItem }) {
             {/* Buttons container - appears on hover */}
             <div className="absolute bottom-4 left-0 w-full px-4 flex justify-center gap-2 items-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
               {/* Buy button */}
-              <Link
-                href={`/item/${item._id}/buy`}
-                onClick={(e) => e.stopPropagation()}
+
+              <Button
+                style={{
+                  clipPath:
+                    "polygon(0% 0%, 100% 0%, 100% 70%, 80% 100%, 0% 100%)",
+                }}
+                className="bg-[#FF6B5A] hover:bg-[#FF8B7A] text-black font-medium rounded-md flex items-center gap-2 py-2 px-4 hover:cursor-pointer"
               >
-                <Button
-                  style={{
-                    clipPath:
-                      "polygon(0% 0%, 100% 0%, 100% 70%, 80% 100%, 0% 100%)",
-                  }}
-                  className="bg-[#FF6B5A] hover:bg-[#FF8B7A] text-black font-medium rounded-md flex items-center gap-2 py-2 px-4 hover:cursor-pointer"
-                >
-                  <TagIcon
-                    size={20}
-                    className="font-bold text-[#FF6B5A]"
-                    fill="black"
-                  />
-                  <span className="text-lg font-semibold">BUY</span>
-                </Button>
-              </Link>
+                <TagIcon
+                  size={20}
+                  className="font-bold text-[#FF6B5A]"
+                  fill="black"
+                />
+                <span className="text-lg font-semibold">BUY</span>
+              </Button>
 
               {/* Plus button */}
               <Button
@@ -75,7 +71,7 @@ export default function ItemCard({ item }: { item: IItem }) {
           </div>
         </div>
 
-        <Link href={`/item/${item._id}`}>
+        <Link href={`/items/${item.name.toLowerCase().replace(/ /g, "-")}`}>
           <CardContent className="p-0">
             {/* Collection Name with verification icon */}
             <div className="px-4 pt-3">
