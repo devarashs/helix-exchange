@@ -74,7 +74,7 @@ export default function ItemCard({ item }: { item: IItem }) {
         <Link href={`/items/${item.name.toLowerCase().replace(/ /g, "-")}`}>
           <CardContent className="p-0">
             {/* Collection Name with verification icon */}
-            <div className="px-4 pt-3">
+            <div className="px-3 pt-3">
               <div className="flex items-start gap-1 text-xs text-white/[0.56] font-medium mb-1.5">
                 {item.collectionId.name}
                 <VectorIcon size={16} />
@@ -89,7 +89,7 @@ export default function ItemCard({ item }: { item: IItem }) {
 
           {/* Price and Supply Footer */}
           <CardFooter className="p-2">
-            <div className="flex justify-between w-full px-4 py-4 bg-white/[0.06]">
+            <div className="flex justify-between w-full px-4 py-4 bg-white/[0.06] rounded-md">
               <div className="flex flex-col">
                 <span className="text-lg text-white/[0.56] font-semibold mb-1">
                   Price
