@@ -78,7 +78,7 @@ export default function CollectionChart() {
   const priceLines = [10, 20, 40, 70, 120, 160];
 
   return (
-    <Card className="bg--white/[0] text-white border-0">
+    <Card className="bg--white/[0] text-white border-0 overflow-hidden">
       <CardHeader className="p-0">
         <div className="flex justify-between">
           <div className="flex items-center gap-2">
