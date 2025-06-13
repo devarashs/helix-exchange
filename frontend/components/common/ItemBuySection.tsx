@@ -1,7 +1,7 @@
 import React from "react";
 import { IItem } from "./ItemSection";
 import { Button } from "@/components/ui/button";
-import { HandHelping, TagIcon } from "lucide-react";
+import { HandHelping, Receipt, TagIcon } from "lucide-react";
 import { SubtractIcon } from "@/icons/SubtractIcon";
 
 export default function ItemBuySection({ itemData }: { itemData: IItem }) {
@@ -13,8 +13,8 @@ export default function ItemBuySection({ itemData }: { itemData: IItem }) {
     <div className="bg-white/[0.06] text-white p-5 rounded-lg shadow-lg">
       <div className="mb-4">
         <div className="flex items-center gap-2">
-          <span className="text-md uppercase text-white font-bold">
-            $ PRICE
+          <span className="text-md uppercase text-white font-bold flex items-center gap-1">
+            <Receipt /> PRICE
           </span>
         </div>
         <div className="flex items-center justify-start gap-3 mt-1">
