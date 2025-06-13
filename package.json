@@ -6,7 +6,9 @@
     "backend"
   ],
   "scripts": {
-    "dev": "concurrently \"cd backend && yarn dev\" \"cd frontend && yarn dev\""
+    "dev": "concurrently \"cd backend && yarn dev\" \"cd frontend && yarn dev\"",
+    "build": "concurrently \"cd backend && yarn build\" \"cd frontend && yarn build\"",
+    "start": "concurrently \"cd backend && yarn start\" \"cd frontend && yarn start\""
   },
   "devDependencies": {
     "concurrently": "^9.0.1"
