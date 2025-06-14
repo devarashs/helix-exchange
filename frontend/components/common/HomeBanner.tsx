@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils"; // shadcn utility for className merging
 import Image from "next/image";
@@ -27,7 +27,21 @@ export default function HomeBanner() {
   // Extract category from /categories/[category]
   const match = pathname.match(/^\/categories\/([^/]+)/);
   const category = match ? match[1] : null;
-  const imageSrc = category && categoryImages[category];
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (category && categoryImages[category]) {
+      setIsLoading(true);
+      setImageSrc(categoryImages[category]);
+    } else {
+      setImageSrc(null);
+    }
+  }, [category]);
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
 
   return (
     <div className="w-full py-4">
@@ -37,13 +51,23 @@ export default function HomeBanner() {
           "bg-black",
         )}
       >
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
+            <div className="animate-pulse w-10 h-10 rounded-full bg-gray-400"></div>
+          </div>
+        )}
+
         {imageSrc && (
           <Image
             width={1920}
             height={1080}
             src={imageSrc}
-            alt={category}
-            className="absolute inset-0 w-full h-full object-cover"
+            alt={category || "banner"}
+            className={cn(
+              "absolute inset-0 w-full h-full object-cover transition-opacity duration-500",
+              isLoading ? "opacity-0" : "opacity-100",
+            )}
+            onLoad={handleImageLoad}
           />
         )}
       </div>
