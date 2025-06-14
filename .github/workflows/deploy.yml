@@ -21,7 +21,7 @@ jobs:
         run: |
           echo "ACCESS_TOKEN=${{ secrets.ACCESS_TOKEN }}" >> envfile
           echo "SERVER_USER=${{ secrets.SERVER_USER }}" >> envfile
-          echo "SERVER_IP=${{ secrets.PROJECT_REPO }}" >> envfile
+          echo "SERVER_IP=${{ secrets.SERVER_IP }}" >> envfile
           echo "PROJECT_PATH=${{ secrets.PROJECT_PATH }}" >> envfile
           echo "PROJECT_REPO=${{ secrets.PROJECT_REPO }}" >> envfile
           echo "PM2_PROCESS_NUMBER=${{ secrets.PM2_PROCESS_NUMBER }}" >> envfile
