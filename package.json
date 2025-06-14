@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "dev": "concurrently \"cd backend && yarn dev\" \"cd frontend && yarn dev\"",
-    "build": "concurrently \"cd backend && yarn build\" \"cd frontend && yarn build\"",
+    "build": "concurrently \"cd backend && yarn && yarn build\" \"cd frontend && yarn && yarn build\"",
     "start": "concurrently \"cd backend && yarn start\" \"cd frontend && yarn start\"",
     "setup": "concurrently \"cd backend && yarn\" \"cd frontend && yarn\""
   },
