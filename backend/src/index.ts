@@ -4,10 +4,11 @@ import ShopRouter from "./routes/shop.routes";
 import mongoose from "mongoose";
 import CollectionRouter from "./routes/collection.routes";
 import ItemRouter from "./routes/item.routes";
+import UserRouter from "./routes/user.routes";
 
 dotenv.config();
 
-const app = express();
+export const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
@@ -28,6 +29,7 @@ app.get("/", (_req, res) => {
 app.use("/shop", ShopRouter);
 app.use("/collection", CollectionRouter);
 app.use("/item", ItemRouter);
+app.use("/user", UserRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
