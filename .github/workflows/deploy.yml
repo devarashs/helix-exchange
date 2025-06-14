@@ -1,0 +1,56 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Create environment file
+        run: |
+          echo "ACCESS_TOKEN=${{ secrets.ACCESS_TOKEN }}" >> envfile
+          echo "SERVER_USER=${{ secrets.SERVER_USER }}" >> envfile
+          echo "SERVER_IP=${{ secrets.PROJECT_REPO }}" >> envfile
+          echo "PROJECT_PATH=${{ secrets.PROJECT_PATH }}" >> envfile
+          echo "PROJECT_REPO=${{ secrets.PROJECT_REPO }}" >> envfile
+          echo "PM2_PROCESS_NUMBER=${{ secrets.PM2_PROCESS_NUMBER }}" >> envfile
+          echo "REQUEST_USER=${{ secrets.REQUEST_USER }}" >> envfile
+
+      - name: Transfer environment file to remote server
+        run: scp -o StrictHostKeyChecking=no envfile ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }}:/tmp/envfile
+
+      - name: Deploy to server
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} << 'EOF'
+            # Source the environment file
+            source /tmp/envfile
+
+            # Navigate to the project directory
+            cd $PROJECT_PATH
+
+            # Pull the latest changes from the main branch using the username and access token
+            git pull https://$REQUEST_USER:$ACCESS_TOKEN@$PROJECT_REPO main
+
+            # Install any new packages
+            yarn build
+
+            # Restart the pm2 process using the process number from the secrets
+            pm2 restart $PM2_PROCESS_NUMBER
+
+            # Clean up the environment file
+            rm /tmp/envfile
+          EOF
+
+      - name: Clean up local environment file
+        run: rm envfile
